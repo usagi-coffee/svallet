@@ -39,8 +39,8 @@
 
     const template = `This dumb demo wants you to sign in with your wallet: $1`;
 
-    const wallet_client = await evm.wallet_client();
-    const signature = await wallet_client.signMessage({
+    const wallet = await evm.wallet;
+    const signature = await wallet.signMessage({
       message: template.replace("$1", evm.address),
     });
 
@@ -51,8 +51,9 @@
     if (!svm.address) return;
 
     const template = `This dumb demo wants you to sign in with your wallet: $1`;
+    const wallet = await svm.wallet;
     const signature = bs58.encode(
-      await svm.adapter.signMessage(
+      await wallet.signMessage(
         new TextEncoder().encode(template.replace("$1", svm.address)),
       ),
     );

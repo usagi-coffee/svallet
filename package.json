@@ -41,7 +41,7 @@
       "types": "./dist/svm.svelte.d.ts",
       "svelte": "./dist/svm.svelte.js"
     },
-    "./icons/*": "./dist/assets/"
+    "./icons/*": "./dist/assets/*"
   },
   "peerDependencies": {
     "svelte": "^5.0.0",
