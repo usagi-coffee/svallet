@@ -1,0 +1,73 @@
+{
+  "name": "svallet",
+  "version": "0.0.1",
+  "type": "module",
+  "scripts": {
+    "dev": "svelte-package -w",
+    "demo": "vite dev",
+    "build": "vite build && npm run prepack",
+    "preview": "vite preview",
+    "prepare": "svelte-kit sync || echo ''",
+    "prepack": "svelte-kit sync && svelte-package && publint",
+    "check": "svelte-kit sync && svelte-check --tsconfig ./jsconfig.json",
+    "check:watch": "svelte-kit sync && svelte-check --tsconfig ./jsconfig.json --watch",
+    "format": "prettier --write .",
+    "lint": "prettier --check ."
+  },
+  "license": "MIT",
+  "author": "Kamil Jakubus",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/usagi-coffee/svallet.git"
+  },
+  "bugs": {
+    "url": "https://github.com/usagi-coffee/svallet/issues"
+  },
+  "homepage": "https://github.com/usagi-coffee/svallet#readme",
+  "files": [
+    "dist",
+    "!dist/**/*.test.*",
+    "!dist/**/*.spec.*"
+  ],
+  "sideEffects": [
+    "**/*.css"
+  ],
+  "exports": {
+    "./evm": {
+      "types": "./dist/evm.svelte.d.ts",
+      "svelte": "./dist/evm.svelte.js"
+    },
+    "./svm": {
+      "types": "./dist/svm.svelte.d.ts",
+      "svelte": "./dist/svm.svelte.js"
+    },
+    "./icons/*": "./dist/assets/"
+  },
+  "peerDependencies": {
+    "svelte": "^5.0.0",
+    "viem": "^2.0.0",
+    "@wagmi/core": "^2.0.0"
+  },
+  "dependencies": {
+    "@solana/wallet-adapter-base": "^0.9.23",
+    "@solana/wallet-standard-wallet-adapter-base": "^1.1.4",
+    "@wagmi/connectors": "^5.7.5",
+    "@wallet-standard/app": "^1.1.0"
+  },
+  "devDependencies": {
+    "@sveltejs/adapter-auto": "^4.0.0",
+    "@sveltejs/kit": "^2.0.0",
+    "@sveltejs/package": "^2.3.9",
+    "@sveltejs/vite-plugin-svelte": "^5.0.3",
+    "@tailwindcss/vite": "^4.0.0",
+    "@types/bun": "latest",
+    "bs58": "^6.0.0",
+    "prettier": "^3.4.2",
+    "prettier-plugin-svelte": "^3.3.3",
+    "publint": "^0.3.2",
+    "svelte-check": "^4.1.4",
+    "tailwindcss": "^4.0.0",
+    "typescript": "^5.7.3",
+    "vite": "^6.0.11"
+  }
+}
