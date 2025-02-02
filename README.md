@@ -48,11 +48,11 @@ This is an example of how you can use Svallet in your SvelteKit project but it c
 
 Demo is available in `src/routes`, it includes a simple example of connecting and signing a message with EVM and SVM wallets.
 
-![Demo](./extra/demo.png)
-
 ```bash
 bun demo
 ```
+
+![Demo](./extra/demo.png)
 
 ## Icons
 
@@ -72,7 +72,6 @@ import BackpackIcon from "svallet/icons/backpack.png";
 ## License
 
 ```
-
 MIT License
 
 Copyright (c) Kamil Jakubus and contributors
@@ -94,9 +93,4 @@ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
-
-```
-
-```
-
 ```
