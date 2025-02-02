@@ -1,4 +1,4 @@
-# svallet: headless svelte wallet logic for EVM & SVM.
+# svallet: headless svelte wallet logic for EVM & SVM
 
 > Proof of Concept - expect bugs and breaking changes!
 
@@ -6,7 +6,7 @@ Svallet is a headless wallet library for easily integrating wallet connection lo
 
 ## Usage
 
-Install peer dependencies `viem`, `@wagmi/core` then you can use `svallet`.
+Install peer dependencies `svelte`, `viem`, `@wagmi/core` then you can use`svallet`.
 
 ```bash
 bun add viem
