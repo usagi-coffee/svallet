@@ -1,4 +1,6 @@
-# Svallet - Headless Svelte wallet logic for EVM & SVM.
+# svallet: headless svelte wallet logic for EVM & SVM.
+
+> Proof of Concept - expect bugs and breaking changes!
 
 Svallet is a headless wallet library for easily integrating wallet connection logic into your Svelte 5 dapps leveraging Svelte runes, it is a headless library which means you are supposed to build your own UI for connecting/disconnecting and managing the wallet.
 
@@ -44,7 +46,7 @@ This is an example of how you can use Svallet in your SvelteKit project but it c
 </script>
 ```
 
-## Run demo
+## Demo
 
 Demo is available in `src/routes`, it includes a simple example of connecting and signing a message with EVM and SVM wallets.
 
