@@ -85,4 +85,11 @@
   <button onclick={sign_svm} class="p-2 bg-purple-300 rounded">
     Sign SVM
   </button>
+
+  <button onclick={evm.disconnect} class="p-2 bg-red-200">
+    Disconnect EVM
+  </button>
+  <button onclick={svm.disconnect} class="p-2 bg-red-200">
+    Disconnect SVM
+  </button>
 </div>

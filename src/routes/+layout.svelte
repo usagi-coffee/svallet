@@ -22,7 +22,6 @@
   setContext("wallet:svm", svm);
 
   // Reconnect the wallet if already connected before on mount
-  evm.reconnect();
   svm.reconnect();
 </script>
 
