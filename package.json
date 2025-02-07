@@ -1,6 +1,6 @@
 {
   "name": "svallet",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "type": "module",
   "scripts": {
     "demo": "vite dev",
@@ -23,8 +23,12 @@
     "url": "https://github.com/usagi-coffee/svallet/issues"
   },
   "homepage": "https://github.com/usagi-coffee/svallet#readme",
-  "files": ["src/lib"],
-  "sideEffects": ["**/*.css"],
+  "files": [
+    "src/lib"
+  ],
+  "sideEffects": [
+    "**/*.css"
+  ],
   "exports": {
     "./evm": {
       "svelte": "./src/lib/evm.svelte.js"
