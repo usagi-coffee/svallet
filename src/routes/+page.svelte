@@ -1,18 +1,15 @@
 <script>
-  /** @import { EvmContext } from "$lib/evm.svelte" */
-  /** @import { SvmContext } from "$lib/svm.svelte" */
-
-  import { getContext, setContext } from "svelte";
+  import { getContext } from "svelte";
 
   import bs58 from "bs58";
 
   import EvmConnect from "./EvmConnect.svelte";
   import SvmConnect from "./SvmConnect.svelte";
 
-  /** @type {EvmContext} */
+  /** @type {import("$lib/evm.svelte").EvmContext} */
   const evm = getContext("wallet:evm");
 
-  /** @type {SvmContext} */
+  /** @type {import("$lib/evm.svelte").SvmContext} */
   const svm = getContext("wallet:svm");
 
   async function connect_evm() {
@@ -72,12 +69,12 @@
 
   <p>
     Connected EVM: {evm.address
-      ? evm.address.slice(0, 8) + "..."
+      ? evm.address
       : "Not Connected"}
   </p>
   <p>
     Connected SVM: {svm.address
-      ? svm.address.slice(0, 8) + "..."
+      ? svm.address
       : "Not connected"}
   </p>
 

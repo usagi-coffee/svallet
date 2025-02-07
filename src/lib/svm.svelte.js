@@ -16,7 +16,7 @@ import { getWallets } from "@wallet-standard/app";
 /**
  * @typedef {object} SvmContext
  * @property {Configuration} configuration
- * @property {() => Promise<void>} connect
+ * @property {(chain: string, options: { Component: any }) => Promise<void>} connect
  * @property {() => Promise<void>} reconnect
  * @property {() => void} disconnect
  * @property {string} address
