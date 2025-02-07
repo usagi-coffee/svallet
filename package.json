@@ -3,6 +3,7 @@
   "version": "0.0.3",
   "type": "module",
   "scripts": {
+    "dev": "svelte-package -w",
     "demo": "vite dev",
     "build": "vite build && npm run prepack",
     "preview": "vite preview",
@@ -23,20 +24,18 @@
     "url": "https://github.com/usagi-coffee/svallet/issues"
   },
   "homepage": "https://github.com/usagi-coffee/svallet#readme",
-  "files": [
-    "src/lib"
-  ],
-  "sideEffects": [
-    "**/*.css"
-  ],
+  "files": ["dist", "!dist/**/*.test.*", "!dist/**/*.spec.*"],
+  "sideEffects": ["**/*.css"],
   "exports": {
     "./evm": {
-      "svelte": "./src/lib/evm.svelte.js"
+      "types": "./dist/evm.svelte.d.ts",
+      "svelte": "./dist/evm.svelte.js"
     },
     "./svm": {
-      "svelte": "./src/lib/svm.svelte.js"
+      "types": "./dist/svm.svelte.d.ts",
+      "svelte": "./dist/svm.svelte.js"
     },
-    "./icons/*": "./src/lib/assets/*"
+    "./icons/*": "./dist/assets/*"
   },
   "peerDependencies": {
     "svelte": "^5.0.0",
