@@ -1,6 +1,6 @@
 {
   "name": "svallet",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "type": "module",
   "scripts": {
     "dev": "svelte-package -w",
@@ -24,8 +24,14 @@
     "url": "https://github.com/usagi-coffee/svallet/issues"
   },
   "homepage": "https://github.com/usagi-coffee/svallet#readme",
-  "files": ["dist", "!dist/**/*.test.*", "!dist/**/*.spec.*"],
-  "sideEffects": ["**/*.css"],
+  "files": [
+    "dist",
+    "!dist/**/*.test.*",
+    "!dist/**/*.spec.*"
+  ],
+  "sideEffects": [
+    "**/*.css"
+  ],
   "exports": {
     "./evm": {
       "types": "./dist/evm.svelte.d.ts",
