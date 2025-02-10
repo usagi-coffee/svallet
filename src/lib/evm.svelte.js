@@ -40,7 +40,7 @@ import {
  * @typedef {object} EvmContext
  * @property {Configuration} configuration
  * @property {() => Promise<void>} reconnect
- * @property {(chain: number, options: { Component: any }) => Promise<void>} connect
+ * @property {(chain: number, options: { Component: any }) => Promise<boolean>} connect
  * @property {() => Promise<void>} disconnect
  * @property {(chain: number) => Promise<void>} switch_chain
  * @property {number} chain_id
@@ -87,7 +87,7 @@ export default function (configuration) {
           transport: configuration.client_transport(chain) ?? http(),
         });
       },
-    })
+    }),
   );
 
   let chain_id = $state(getChainId(wagmi));
@@ -138,7 +138,7 @@ export default function (configuration) {
           /** @param {CreateConnectorFn} connector */
           connect: async (connector) => {
             const found = get_wagmi_connections(wagmi).find(
-              (cnx) => cnx.connector.type === connector.type
+              (cnx) => cnx.connector.type === connector.type,
             );
 
             if (found) {
