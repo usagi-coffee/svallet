@@ -6,11 +6,6 @@ import { getWallets } from "@wallet-standard/app";
 /**
  * Configuration
  * @typedef {object} Configuration
- * @property {Array<Chain>} chains
- * // Some connect properties
- * @property {string} WALLET_CONNECT_PROJECT_ID
- * @property {string} COINBASE_APP_NAME
- * @property {string} ALCHEMY_API_KEY
  */
 
 /**
