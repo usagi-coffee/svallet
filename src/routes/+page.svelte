@@ -9,7 +9,7 @@
   /** @type {import("$lib/evm.svelte").EvmContext} */
   const evm = getContext("wallet:evm");
 
-  /** @type {import("$lib/evm.svelte").SvmContext} */
+  /** @type {import("$lib/svm.svelte").SvmContext} */
   const svm = getContext("wallet:svm");
 
   async function connect_evm() {

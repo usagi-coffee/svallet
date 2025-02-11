@@ -9,20 +9,11 @@ import { getWallets } from "@wallet-standard/app";
  */
 
 /**
- * @typedef {object} SvmContext
- * @property {Configuration} configuration
- * @property {(chain: string, options: { Component: any }) => Promise<boolean>} connect
- * @property {() => Promise<void>} reconnect
- * @property {() => void} disconnect
- * @property {string} address
- * @property {Promise<StandardWalletAdapter>} wallet
+ * @typedef {ReturnType<context>} SvmContext
  */
 
-/**
- * @param {Configuration} configuration
- * @returns {SvmContext}
- */
-export default function (configuration) {
+/** @param {Configuration} configuration */
+export function context(configuration) {
   let adapter = $state();
 
   async function connect(chain = "solana", { Component }) {
@@ -83,3 +74,5 @@ export default function (configuration) {
     },
   };
 }
+
+export default context;

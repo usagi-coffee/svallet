@@ -4,7 +4,7 @@
   /** @import { EvmContext } from "$lib/evm.svelte" */
   /** @import { SvmContext } from "$lib/svm.svelte" */
 
-  import { getContext, setContext } from "svelte";
+  import { setContext } from "svelte";
   import { mainnet, base, bsc } from "viem/chains";
 
   import create_evm from "$lib/evm.svelte.js";
@@ -22,6 +22,7 @@
   setContext("wallet:svm", svm);
 
   // Reconnect the wallet if already connected before on mount
+  evm.reconnect();
   svm.reconnect();
 </script>
 
