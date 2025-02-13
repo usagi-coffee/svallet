@@ -69,6 +69,7 @@ import RabbyIcon from "svallet/icons/rabby.svg";
 import SafeIcon from "svallet/icons/safe.svg";
 import FrameIcon from "svallet/icons/frame.png";
 import BackpackIcon from "svallet/icons/backpack.png";
+import SolflareIcon from "svallet/icons/solflare.svg";
 ```
 
 ## License
