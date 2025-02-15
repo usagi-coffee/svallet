@@ -1,7 +1,9 @@
+/** @namespace evm */
+
 /** @import { Chain } from "viem/chains" */
 /** @import { CreateConnectorFn } from "@wagmi/core" */
 
-import { mount, unmount, setContext } from "svelte";
+import { mount, unmount } from "svelte";
 
 import { createClient } from "viem";
 import {
@@ -37,7 +39,7 @@ import {
  */
 
 /**
- * @typedef {ReturnType<context>} EvmContext
+ * @typedef {ReturnType<typeof context>} EvmContext
  */
 
 /** @param {Configuration} configuration */

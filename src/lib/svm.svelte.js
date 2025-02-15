@@ -1,6 +1,6 @@
 /** @import { StandardWalletAdapter } from "@solana/wallet-standard-wallet-adapter-base" */
 
-import { mount, unmount, setContext } from "svelte";
+import { mount, unmount } from "svelte";
 import { getWallets } from "@wallet-standard/app";
 
 /**
@@ -9,7 +9,7 @@ import { getWallets } from "@wallet-standard/app";
  */
 
 /**
- * @typedef {ReturnType<context>} SvmContext
+ * @typedef {ReturnType<typeof context>} SvmContext
  */
 
 /** @param {Configuration} configuration */

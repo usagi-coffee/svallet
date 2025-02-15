@@ -1,4 +1,7 @@
 <script>
+  /** @import { EvmContext } from "svallet/evm" */
+  /** @import { SvmContext } from "svallet/svm" */
+
   import { getContext } from "svelte";
 
   import bs58 from "bs58";
@@ -6,10 +9,10 @@
   import EvmConnect from "./EvmConnect.svelte";
   import SvmConnect from "./SvmConnect.svelte";
 
-  /** @type {import("$lib/evm.svelte").EvmContext} */
+  /** @type {EvmContext} */
   const evm = getContext("wallet:evm");
 
-  /** @type {import("$lib/svm.svelte").SvmContext} */
+  /** @type {SvmContext} */
   const svm = getContext("wallet:svm");
 
   async function connect_evm() {
@@ -68,14 +71,10 @@
   </button>
 
   <p>
-    Connected EVM: {evm.address
-      ? evm.address
-      : "Not Connected"}
+    Connected EVM: {evm.address ? evm.address : "Not Connected"}
   </p>
   <p>
-    Connected SVM: {svm.address
-      ? svm.address
-      : "Not connected"}
+    Connected SVM: {svm.address ? svm.address : "Not connected"}
   </p>
 
   <button onclick={sign_evm} class="p-2 bg-blue-300 rounded"> Sign EVM </button>

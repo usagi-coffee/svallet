@@ -1,14 +1,11 @@
 <script>
   import "../app.css";
 
-  /** @import { EvmContext } from "$lib/evm.svelte" */
-  /** @import { SvmContext } from "$lib/svm.svelte" */
-
   import { setContext } from "svelte";
   import { mainnet, base, bsc } from "viem/chains";
 
-  import create_evm from "$lib/evm.svelte.js";
-  import create_svm from "$lib/svm.svelte.js";
+  import create_evm from "svallet/evm";
+  import create_svm from "svallet/svm";
 
   const { children } = $props();
 
