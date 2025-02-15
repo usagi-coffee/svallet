@@ -34,10 +34,10 @@
     }
   }
 
+  const template = `This dumb demo wants you to sign in with your wallet: $1`;
+
   async function sign_evm() {
     if (!evm.address) return;
-
-    const template = `This dumb demo wants you to sign in with your wallet: $1`;
 
     const wallet = await evm.wallet;
     const signature = await wallet.signMessage({
@@ -50,7 +50,6 @@
   async function sign_svm() {
     if (!svm.address) return;
 
-    const template = `This dumb demo wants you to sign in with your wallet: $1`;
     const wallet = await svm.wallet;
     const signature = bs58.encode(
       await wallet.signMessage(

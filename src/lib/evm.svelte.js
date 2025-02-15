@@ -1,5 +1,3 @@
-/** @namespace evm */
-
 /** @import { Chain } from "viem/chains" */
 /** @import { CreateConnectorFn } from "@wagmi/core" */
 
