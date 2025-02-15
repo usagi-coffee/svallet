@@ -34,7 +34,7 @@
       "import": "./src/lib/svm.svelte.js",
       "svelte": "./src/lib/svm.svelte.js"
     },
-    "./icons/*": "./dist/assets/*"
+    "./icons/*": "./src/lib/assets/*"
   },
   "peerDependencies": {
     "svelte": "^5.0.0",
