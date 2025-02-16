@@ -80,7 +80,10 @@ export function context(configuration) {
   );
 
   let chain_id = $state(getChainId(wagmi));
+
+  /** @type {string} */
   let address = $state();
+
   let recent_connector_id = $state();
 
   // Watch for chain changes
@@ -113,7 +116,9 @@ export function context(configuration) {
   /** @param {number} chain */
   async function connect(chain = configuration.chains[0].id, { Component }) {
     let element;
-    let connected = await new Promise((resolve) => {
+
+    /** @type {boolean} */
+    const connected = await new Promise((resolve) => {
       element = mount(Component, {
         target: document.body,
         props: {

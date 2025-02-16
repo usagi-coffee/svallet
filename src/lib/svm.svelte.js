@@ -14,11 +14,15 @@ import { getWallets } from "@wallet-standard/app";
 
 /** @param {Configuration} configuration */
 export function context(configuration) {
+  /** @type {StandardWalletAdapter} */
   let adapter = $state();
 
+  /** @param {string} chain */
   async function connect(chain = "solana", { Component }) {
     let element;
-    let connected = await new Promise((resolve) => {
+
+    /** @type {boolean} */
+    const connected = await new Promise((resolve) => {
       element = mount(Component, {
         target: document.body,
         props: {
