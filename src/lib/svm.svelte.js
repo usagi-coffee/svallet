@@ -58,6 +58,7 @@ export function context(configuration) {
 
   function disconnect() {
     adapter = undefined;
+    return Promise.resolve();
   }
 
   return {

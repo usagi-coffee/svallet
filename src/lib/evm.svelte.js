@@ -158,7 +158,7 @@ export function context(configuration) {
   }
 
   function disconnect() {
-    wagmi_disconnect(wagmi);
+    return wagmi_disconnect(wagmi);
   }
 
   return {
