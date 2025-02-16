@@ -1,6 +1,6 @@
 {
   "name": "svallet",
-  "version": "0.0.6",
+  "version": "0.0.7",
   "type": "module",
   "scripts": {
     "demo": "vite dev",
@@ -21,7 +21,10 @@
     "url": "https://github.com/usagi-coffee/svallet/issues"
   },
   "homepage": "https://github.com/usagi-coffee/svallet#readme",
-  "files": ["src", "!src/routes"],
+  "files": [
+    "src",
+    "!src/routes"
+  ],
   "exports": {
     "./evm": {
       "types": "./src/lib/evm.d.ts",
