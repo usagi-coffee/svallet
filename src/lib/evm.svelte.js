@@ -76,7 +76,7 @@ export function context(configuration) {
           transport: configuration.client_transport(chain) ?? http(),
         });
       },
-    })
+    }),
   );
 
   let chain_id = $state(getChainId(wagmi));
@@ -127,7 +127,7 @@ export function context(configuration) {
           /** @param {CreateConnectorFn} connector */
           connect: async (connector) => {
             const found = get_wagmi_connections(wagmi).find(
-              (cnx) => cnx.connector.type === connector.type
+              (cnx) => cnx.connector.type === connector.type,
             );
 
             if (found) {
@@ -174,7 +174,7 @@ export function context(configuration) {
       return address;
     },
     get wallet() {
-      if (!address) return;
+      if (!address) return Promise.reject("No account connected");
       return getWalletClient(wagmi, { account: address });
     },
 

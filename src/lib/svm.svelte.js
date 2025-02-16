@@ -70,6 +70,7 @@ export function context(configuration) {
       return adapter.publicKey.toString();
     },
     get wallet() {
+      if (!adapter) return Promise.reject("No account connected");
       return Promise.resolve(adapter);
     },
   };
