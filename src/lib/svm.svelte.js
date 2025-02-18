@@ -21,6 +21,9 @@ export function context(configuration) {
   async function connect(chain = "solana", { Component }) {
     let element;
 
+    // Microtask wait to not stack dialogs (svelte bug?)
+    await Promise.resolve().then(() => {});
+
     /** @type {boolean} */
     const connected = await new Promise((resolve) => {
       element = mount(Component, {

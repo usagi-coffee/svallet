@@ -1,7 +1,7 @@
 /** @import { Chain } from "viem/chains" */
 /** @import { CreateConnectorFn } from "@wagmi/core" */
 
-import { mount, unmount } from "svelte";
+import { flushSync, mount, unmount } from "svelte";
 
 import { createClient } from "viem";
 import {
@@ -17,6 +17,7 @@ import {
   getConnectors as get_wagmi_connectors,
   switchChain as wagmi_switch,
   disconnect as wagmi_disconnect,
+  getAccount as get_wagmi_account,
 } from "@wagmi/core";
 import {
   coinbaseWallet,
@@ -81,11 +82,6 @@ export function context(configuration) {
 
   let chain_id = $state(getChainId(wagmi));
 
-  /** @type {string} */
-  let address = $state();
-
-  let recent_connector_id = $state();
-
   // Watch for chain changes
   watchChainId(wagmi, {
     onChange: (value) => {
@@ -93,13 +89,7 @@ export function context(configuration) {
     },
   });
 
-  // Watch for account changes
-  watchAccount(wagmi, {
-    onChange: (account) => {
-      address = account?.address;
-    },
-  });
-
+  let recent_connector_id = $state();
   async function reconnect() {
     recent_connector_id = await wagmi.storage?.getItem("recentConnectorId");
     if (recent_connector_id) return await wagmi_reconnect(wagmi);
@@ -116,6 +106,9 @@ export function context(configuration) {
   /** @param {number} chain */
   async function connect(chain = configuration.chains[0].id, { Component }) {
     let element;
+
+    // Microtask wait to not stack dialogs (svelte bug?)
+    await Promise.resolve().then(() => {});
 
     /** @type {boolean} */
     const connected = await new Promise((resolve) => {
@@ -135,19 +128,15 @@ export function context(configuration) {
               (cnx) => cnx.connector.type === connector.type,
             );
 
-            if (found) {
-              address = found.accounts[0];
+            if (found && get_wagmi_account(wagmi).isConnected) {
               return resolve(true);
             }
 
             const parameters = { connector };
 
             if (connector.type === "metaMask") unmount(element);
-
             try {
-              const wallet = await wagmi_connect(wagmi, parameters);
-              address = wallet.accounts[0];
-
+              await wagmi_connect(wagmi, parameters);
               await switch_chain(chain);
               resolve(true);
             } catch (e) {
@@ -162,8 +151,13 @@ export function context(configuration) {
     return connected;
   }
 
-  function disconnect() {
-    return wagmi_disconnect(wagmi);
+  async function disconnect(address = undefined) {
+    if (address) await wagmi_disconnect(wagmi, { account: address });
+    else {
+      while (get_wagmi_connections(wagmi).length > 0) {
+        await wagmi_disconnect(wagmi);
+      }
+    }
   }
 
   return {
@@ -175,12 +169,24 @@ export function context(configuration) {
     get chain_id() {
       return chain_id;
     },
+    get account() {
+      return get_wagmi_account(wagmi);
+    },
     get address() {
-      return address;
+      return this.account.address;
+    },
+    get connected() {
+      return this.account.isConnected;
     },
     get wallet() {
-      if (!address) return Promise.reject("No account connected");
-      return getWalletClient(wagmi, { account: address });
+      if (!this.account || !this.connected)
+        return Promise.reject("No account connected");
+
+      return new Promise((resolve, reject) => {
+        return getWalletClient(wagmi, { account: this.address })
+          .then(resolve)
+          .catch(() => reject("Wallet connection expired"));
+      });
     },
 
     // Implementation specific properties
